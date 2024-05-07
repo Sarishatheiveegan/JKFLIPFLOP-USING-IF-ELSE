@@ -34,15 +34,65 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1.V=Define Module: Define a Verilog module for the JK flip-flop with inputs (J, K, CLK) and outputs (Q, Q_bar).
 
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3.Implement Flip-Flop Logic: Write Verilog code to implement the JK flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the JK flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (J, K, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the JK flip-flop matches the expected behavior defined by its functional table.
+
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+ Developed by:MARINO SARISHA T RegisterNumber:212223240084
+ ```
+module JKFLIPFLOPUSINGIFELSE(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+	 
+always @ (posedge (clock))
+
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end
+else 
+      begin
+        if (j==0 && k==0)
+		       begin
+			    q <= q;
+			    q <= qb;
+			    end	 
+        
+        else if (j!=k)
+             begin
+	          q <= j;
+	          qb <= k;
+	          end
+        else if (j==1 && k==1)
+             begin
+	          q <= ~q;
+	          qb <= ~qb;
+	          end
+	  
+      end
+ 
+end           
+endmodule
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
+![Screenshot 2024-05-07 133418](https://github.com/Sarishatheiveegan/JKFLIPFLOP-USING-IF-ELSE/assets/144979465/5816d769-8d29-42b0-b696-8961f76961ac)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![Screenshot 2024-05-07 133444](https://github.com/Sarishatheiveegan/JKFLIPFLOP-USING-IF-ELSE/assets/144979465/53c20868-3098-47ca-b75b-28ff39b3f9aa)
 
 **RESULTS**
+Therefore the code has been successfully executed.
